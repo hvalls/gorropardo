@@ -2,6 +2,8 @@
 
 Software architecture diagramming tool.
 
+![Gorropardo](image.png)
+
 ## Dev
 
 ```sh
