@@ -72,6 +72,7 @@
         label="Label"
         value={edge.label}
         placeholder="e.g. GET /api/users"
+        multiline
         onchange={(v) => update("label", v)}
     />
 
