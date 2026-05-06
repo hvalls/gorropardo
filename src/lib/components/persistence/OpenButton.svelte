@@ -23,7 +23,12 @@
 					error = 'Invalid diagram file.';
 					return;
 				}
-				pending = parsed as Diagram;
+				const isEmpty = $diagram.nodes.length === 0 && $diagram.edges.length === 0;
+				if (isEmpty) {
+					diagram.set(parsed as Diagram);
+				} else {
+					pending = parsed as Diagram;
+				}
 			} catch {
 				error = 'Could not parse the file. Make sure it is a valid diagram file.';
 			}
