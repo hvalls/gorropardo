@@ -1,0 +1,60 @@
+@import 'tailwindcss';
+
+@theme {
+  /* SVG shapes */
+  --color-node-fill: #ffffff;
+  --color-node-cap: #e2e8f0;
+  --color-node-stroke: #94a3b8;
+  --color-node-stroke-selected: #3b82f6;
+
+  /* Box node chrome */
+  --color-node-border: #cbd5e1;
+  --color-node-header: #f1f5f9;
+  --color-node-text: #1e293b;
+  --color-node-kind: #64748b;
+  --color-node-text-dark: #e2e8f0;
+
+  /* Canvas */
+  --color-canvas-bg: #0f172a;
+  --color-canvas-grid: #1e293b;
+
+  /* Selection */
+  --color-selected: #60a5fa;
+
+  /* Panel chrome */
+  --color-panel-bg: #1e293b;
+  --color-panel-border: #334155;
+  --color-panel-heading: #e2e8f0;
+  --color-panel-label: #94a3b8;
+  --color-panel-muted: #64748b;
+  --color-panel-text-dim: #cbd5e1;
+
+  /* Inputs & form controls */
+  --color-input-bg: #0f172a;
+  --color-input-border: #475569;
+  --color-input-text: #f1f5f9;
+  --color-input-focus: #60a5fa;
+
+  /* Buttons */
+  --color-btn-active: #475569;
+  --color-btn-hover: #334155;
+
+  /* Badges/labels */
+  --color-badge-bg: #334155;
+}
+
+* {
+	font-family: 'Geist', sans-serif;
+}
+
+.svelte-flow {
+	cursor: default !important;
+}
+
+.svelte-flow .svelte-flow__pane {
+	cursor: default !important;
+}
+
+.svelte-flow .svelte-flow__node {
+	cursor: move !important;
+}
