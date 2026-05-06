@@ -25,7 +25,7 @@
 	import MobileAppNode from './nodes/MobileAppNode.svelte';
 	import NoteNode from './nodes/NoteNode.svelte';
 
-	import AnimatedEdge from './edges/AnimatedEdge.svelte';
+	import EdgeComponent from './edges/Edge.svelte';
 	import MiddleMousePan from './MiddleMousePan.svelte';
 
 	import { diagram } from '$lib/stores/diagram';
@@ -50,7 +50,7 @@
 	};
 
 	const edgeTypes = {
-		animated: AnimatedEdge
+		animated: EdgeComponent
 	};
 
 	const defaultEdgeOptions = {
