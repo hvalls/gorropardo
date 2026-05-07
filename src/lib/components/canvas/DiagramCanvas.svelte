@@ -86,15 +86,18 @@
 		})) as Edge[]
 	);
 
+	let isDragging = false;
+
+	function onnodedragstart() {
+		isDragging = true;
+	}
+
 	function onnodedragstop({ targetNode, nodes: draggedNodes }: { targetNode: Node | null; nodes: Node[]; event: MouseEvent | TouchEvent }) {
+		isDragging = false;
 		if (draggedNodes.length > 0) {
 			for (const n of draggedNodes) diagram.updateNodePosition(n.id, n.position);
-			suppressNextEmptySelection = true;
-			selection.set({ nodeIds: draggedNodes.map((n) => n.id), edgeIds: [] });
 		} else if (targetNode) {
 			diagram.updateNodePosition(targetNode.id, targetNode.position);
-			suppressNextEmptySelection = true;
-			selection.set({ nodeIds: [targetNode.id], edgeIds: [] });
 		}
 	}
 
@@ -124,20 +127,14 @@
 	}
 
 	function onselectionchange({ nodes: selectedNodes, edges: selectedEdges }: { nodes: Node[]; edges: Edge[] }) {
-		if (selectedNodes.length === 0 && selectedEdges.length === 0) {
-			if (suppressNextEmptySelection) {
-				suppressNextEmptySelection = false;
-			}
-			return;
-		}
-		suppressNextEmptySelection = false;
+		if (isDragging) return;
+		if (selectedNodes.length === 0 && selectedEdges.length === 0) return;
 		selection.set({
 			nodeIds: selectedNodes.map((n) => n.id),
 			edgeIds: selectedEdges.map((e) => e.id)
 		});
 	}
 
-	let suppressNextEmptySelection = false;
 	let clipboard: { nodes: DiagramNode[]; edges: DiagramEdge[] } | null = $state(null);
 
 	function onKeyDown(event: KeyboardEvent) {
@@ -201,6 +198,7 @@
 		selectionOnDrag={true}
 		selectionMode={SelectionMode.Partial}
 		proOptions={{ hideAttribution: true }}
+		{onnodedragstart}
 		{onnodedragstop}
 		{onconnect}
 		{onpaneclick}
